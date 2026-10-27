@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Daily Mentor: a Persian (RTL) personal planner with a self-adjusting schedule, health and food log, and expense tracking from bank SMS text.">
+<title>مربی روزانه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app" dir="rtl" lang="fa">
+  <header class="appbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/><path d="M5 5.5h6" opacity=".6"/></svg></div>
+      <div><b>مربی روزانه</b><span id="subtitle"></span></div>
+    </div>
+    <div class="bar-end">
+      <div class="sync" id="sync"><i></i><span>در حال اتصال</span></div>
+      <button class="circ" data-tab="about" aria-label="دربارهٔ برنامه"><svg class="i" viewBox="0 0 24 24"><path d="M12 8h.01M11 12h1v5h1"/><circle cx="12" cy="12" r="9"/></svg></button>
+    </div>
+  </header>
+
+  <div class="callout" id="demoBar" hidden style="margin-top:4px"><svg class="i" viewBox="0 0 24 24"><path d="M12 8h.01M11 12h1v5h1"/><circle cx="12" cy="12" r="9"/></svg><div>نسخهٔ نمایشی با داده‌های ساختگی. <button data-demo="clear">شروع از صفحهٔ خالی</button> · <button data-demo="seed">بازگرداندن نمونه</button></div></div>
+  <main>
+    <section class="pane" id="pane-today"></section>
+    <section class="pane" id="pane-week" hidden></section>
+    <section class="pane" id="pane-body" hidden></section>
+    <section class="pane" id="pane-money" hidden></section>
+    <section class="pane" id="pane-mentor" hidden>
+      <div class="stack">
+        <div class="ph"><h2>مربی</h2><p>با داده‌های ثبت‌شده‌ات ارزیابی کوتاه می‌دهد. هر ادعا برچسب اطمینان دارد: قطعی، محتمل یا حدسی.</p></div>
+        <div class="chips" id="quick"></div>
+        <div class="chat" id="chat" aria-live="polite"></div>
+        <p class="note">در نسخهٔ نمایشی، مربی با قاعده‌های داخل برنامه جواب می‌دهد و هیچ داده‌ای به بیرون نمی‌فرستد.</p>
+      </div>
+    </section>
+    <section class="pane" id="pane-about" hidden>
+      <div class="stack about">
+        <div class="ph"><h2>دربارهٔ مربی روزانه</h2><p>برنامه‌ریز شخصی برای روزهای شلوغ: برنامه را می‌چیند، پیگیری می‌کند و بر اساس گزارش‌ها پیشنهاد می‌دهد. این نسخه فقط برای نمایش است.</p></div>
+        <div class="card">
+          <h3>امکانات</h3>
+          <ul>
+            <li>برنامهٔ روزانهٔ تیک‌دار با چهار الگوی روز (روز کاری، چهارشنبهٔ دانشگاه، پنجشنبه و جمعه) و ساعت خواب و بیداری محاسبه‌شده</li>
+            <li>رویدادهای خارج از روتین: برنامهٔ همان روز خودکار بازچینی می‌شود و برای ساعت خواب هشدار می‌دهد</li>
+            <li>ثبت پریود، درد و علائم با پیشنهاد غذا و برچسب اطمینان برای هر ادعا</li>
+            <li>دخل و خرج با تشخیص مبلغ از متن پیامک بانک و نمودار دسته‌ها</li>
+            <li>روند رشد: درصد انجام، تقویم رنگی، هدف‌های هفتگی و رشتهٔ روزهای پیاپی</li>
+            <li>مربی قاعده‌محور که با داده‌های خودت ارزیابی روز، هفته و خرج می‌دهد</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>فناوری</h3>
+          <ul>
+            <li>HTML، CSS و JavaScript بدون فریم‌ورک؛ راست‌به‌چپ، واکنش‌گرا، حالت تیره و روشن</li>
+            <li>تقویم شمسی و اعداد فارسی با Intl</li>
+            <li>نمودارهای SVG و CSS بدون کتابخانه</li>
+            <li>ذخیره در مرورگر با localStorage؛ بدون سرور</li>
+            <li>تحلیل پیامک بانک با عبارت‌های منظم و حدس دسته</li>
+            <li>موتور قاعده‌محور برای پیشنهاد غذا و ارزیابی‌های مربی</li>
+          </ul>
+        </div>
+                <div class="card">
+          <h3>پشتیبان‌گیری</h3>
+          <p class="muted" style="margin:6px 0 10px">برای اطمینان، یک نسخهٔ پشتیبان بگیر و جایی نگه دار. برای بازیابی، متن را در کادر بچسبان.</p>
+          <textarea id="bkBox" rows="4" style="width:100%" placeholder="متن پشتیبان اینجا نمایش داده می‌شود یا برای بازیابی اینجا بچسبان"></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px"><button class="btn" data-act="bkmake">ساخت پشتیبان</button><button class="btn ghost" data-act="bkrestore">بازیابی از متن</button></div>
+          <p class="note" id="bkMsg"></p>
+        </div>
+<div class="card">
+          <h3>حریم خصوصی</h3>
+          <p class="muted" style="margin-top:6px">همهٔ داده‌ها فقط در مرورگر خودت می‌ماند و به هیچ سروری فرستاده نمی‌شود. متن پیامک‌ها و شمارهٔ کارت ذخیره نمی‌شود. این برنامه تشخیص پزشکی نمی‌دهد.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" aria-live="polite"><span></span></div>
+
+  <nav class="nav" aria-label="بخش‌ها"><div class="nav-in">
+    <button data-tab="today" aria-selected="true"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg>امروز</button>
+    <button data-tab="week" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg>هفته</button>
+    <button data-tab="body" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>تن</button>
+    <button data-tab="money" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M3 7h16a2 2 0 0 1 2 2v9H5a2 2 0 0 1-2-2zM3 7l2-3h12M16 13h3"/></svg>پول</button>
+    <button data-tab="mentor" aria-selected="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>مربی</button>
+  </div></nav>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
