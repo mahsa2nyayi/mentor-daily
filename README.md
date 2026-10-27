@@ -1,4 +1,6 @@
 # مربی روزانه · Daily Mentor
+**Live demo:**
+https://mahsa2nyayi.github.io/mentor-daily/#today
 
 A Persian (RTL) personal planner and mentor web app: adaptive daily schedule, done/skip tracking, out-of-routine events, body & cycle log with food suggestions, a food diary, and finance tracking from pasted bank SMS. Vanilla HTML/CSS/JS, no framework, no build step, no backend.
 
@@ -54,7 +56,7 @@ Data model (all keyed in one JSON blob): day docs `YYYY-MM-DD` (`done`, `skip`, 
 ## Run locally
 
 ```bash
-git clone <your-repo-url> && cd <repo>
+git clone https://github.com/mahsa2nyayi/mentor-daily.git && cd mentor-daily
 open index.html        # or: python3 -m http.server
 ```
 
